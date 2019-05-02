@@ -73,14 +73,11 @@ public class informaticaBean implements Serializable {
     //----------------
     public void obtenerHard() {
         BaseConocimiento();
-        hardware.setValue(resp1);
-        redes.setValue(resp2);
-        numeros.setValue(resp3);
-        programacion.setValue(resp4);
+        
         rules.forwardChain();
         Resultado = resultCareer.getValue();
 
-        
+        //Mostrar en un modal
         System.out.println(Resultado);
     }
     
