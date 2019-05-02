@@ -1,55 +1,27 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Sistema Vocacional</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-    </h:head>
-    <h:body>
-        <h:form class="container">
-            <p>¿Algo?</p>
-            <div  class="">
-                <h1>
-                    <h:selectOneRadio value="#{inforB.resp1}">
-                        <h1><f:selectItem itemValue="si" itemLabel="si" /></h1>
-                        <h1><f:selectItem itemValue="no" itemLabel="no" /></h1>
-                    </h:selectOneRadio>
-                </h1>
-            </div>
-            <p>¿Algo?</p>
-            <div  class="">
-                <h1>
-                    <h:selectOneRadio value="#{inforB.resp2}">
-                        <h1><f:selectItem itemValue="si" itemLabel="si" /></h1>
-                        <h1><f:selectItem itemValue="no" itemLabel="no" /></h1>
-                    </h:selectOneRadio>
-                </h1>
-            </div>
-            <p>¿Algo?</p>
-            <div  class="">
-                <h1>
-                    <h:selectOneRadio value="#{inforB.resp3}">
-                        <h1><f:selectItem itemValue="si" itemLabel="si" /></h1>
-                        <h1><f:selectItem itemValue="no" itemLabel="no" /></h1>
-                    </h:selectOneRadio>
-                </h1>
-            </div>
-            <p>¿Algo?</p>
-            <div  class="">
-                <h1>
-                    <h:selectOneRadio value="#{inforB.resp4}">
-                        <h1><f:selectItem itemValue="si" itemLabel="si" /></h1>
-                        <h1><f:selectItem itemValue="no" itemLabel="no" /></h1>
-                    </h:selectOneRadio>
-                </h1>
-            </div>
-             
-            <h:commandButton class="btn btn-primary" value="Enviar" action="#{inforB.obtenerHard}"  />
-           
-           
-        </h:form>
-    </h:body>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="./WEB-INF/templates/header.xhtml">
+            <ui:define name="content">
+                <div class="jumbotron jumbotron-fluid mt-5" style="height: 100vh; margin-bottom: 0px !important">
+                    <div class="container">
+                        <h1 class="display-4">Sistema Vocacional</h1>
+                        <p class="lead">Encuentra tu vocacion contestando unas pocas preguntas</p>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
 </html>
-
