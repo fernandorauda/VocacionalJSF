@@ -18,10 +18,10 @@ import javax.inject.Named;
 @Named(value = "inforB")
 @SessionScoped
 public class informaticaBean implements Serializable {
-    String resp1 = "";
-    String resp2 = "";
-    String resp3 = "";
-    String resp4 = "";
+    String resp1 = "no";
+    String resp2 = "no";
+    String resp3 = "no";
+    String resp4 = "no";
 
     public String getResp1() {
         return resp1;
@@ -56,49 +56,14 @@ public class informaticaBean implements Serializable {
     }
    
     
-    
-    public void analisis(){
-        String hard = "", red = "", num ="", prog="", career="";
-        if(resp1.equals("si")){
-            hard = ObtenerHard("si", "no");
-        }else if(resp1.equals("no")){
-            hard = ObtenerHard("no", "si");
-        }
-        
-        if(resp2.equals("si")){
-            red = ObtenerRed("si", "no");
-        }else if(resp2.equals("no")){
-            red = ObtenerRed("no", "si");
-        }
-        
-        if(resp3.equals("si")){
-            num = ObtenerNum("si", "no");
-        }else if(resp3.equals("no")){
-            num = ObtenerNum("no", "si");
-        }
-        
-        if(resp4.equals("si")){
-            prog = ObtenerProg("si", "no");
-        }else if(resp4.equals("no")){
-            prog = ObtenerProg("no", "si");
-        }
-        
-        career = Career(hard, red, num, prog);
-        System.out.println(career);
-    }
-    
     BooleanRuleBase rules = new BooleanRuleBase("rules");
     
     //Varibles de Entrada
     RuleVariable 
-            hardwareSi, 
-            hardwareNo, 
-            redesSi, 
-            redesNo, 
-            numerosSi, 
-            numerosNo, 
-            programacionSi, 
-            programacionNo;
+            hardware,
+            redes,
+            numeros, 
+            programacion;
     
     //Variables de Salida
     RuleVariable resultHard, resultRed, resultNum, resultProg, resultCareer;
@@ -106,56 +71,17 @@ public class informaticaBean implements Serializable {
     String Resultado = "";
     
     //----------------
-    public String ObtenerHard(String SI, String NO) {
+    public void obtenerHard() {
         BaseConocimiento();
-        hardwareSi.setValue(SI);
-        hardwareNo.setValue(NO);
-        rules.forwardChain();
-        Resultado = resultHard.getValue();
-
-        return Resultado;
-    }
-    
-    public String ObtenerRed(String SI, String NO) {
-        BaseConocimiento();
-        redesSi.setValue(SI);
-        redesNo.setValue(NO);
-        rules.forwardChain();
-        Resultado = resultRed.getValue();
-
-        return Resultado;
-    }
-    
-    public String ObtenerNum(String SI, String NO) {
-        BaseConocimiento();
-        numerosSi.setValue(SI);
-        numerosNo.setValue(NO);
-        rules.forwardChain();
-        Resultado = resultNum.getValue();
-
-        return Resultado;
-    }
-    
-    public String ObtenerProg(String SI, String NO) {
-        BaseConocimiento();
-        programacionSi.setValue(SI);
-        programacionNo.setValue(NO);
-        rules.forwardChain();
-        Resultado = resultProg.getValue();
-
-        return Resultado;
-    }
-    
-    public String Career(String hard, String red, String num, String prog) {
-        BaseConocimiento();
-        resultHard.setValue(hard);
-        resultRed.setValue(red);
-        resultNum.setValue(num);
-        resultProg.setValue(prog);
+        hardware.setValue(resp1);
+        redes.setValue(resp2);
+        numeros.setValue(resp3);
+        programacion.setValue(resp4);
         rules.forwardChain();
         Resultado = resultCareer.getValue();
 
-        return Resultado;
+        
+        System.out.println(Resultado);
     }
     
     
@@ -163,14 +89,11 @@ public class informaticaBean implements Serializable {
     public void BaseConocimiento(){
         
         //Inicializar las variables
-        hardwareSi = new RuleVariable(rules, "");
-        hardwareNo = new RuleVariable(rules, "");
-        redesSi = new RuleVariable(rules, "");
-        redesNo = new RuleVariable(rules, "");
-        numerosSi = new RuleVariable(rules, "");
-        numerosNo = new RuleVariable(rules, "");
-        programacionSi = new RuleVariable(rules, "");
-        programacionNo = new RuleVariable(rules, "");
+        hardware = new RuleVariable(rules, "");
+        redes = new RuleVariable(rules, "");
+        numeros = new RuleVariable(rules, "");
+        programacion = new RuleVariable(rules, "");
+
         
         resultHard = new RuleVariable(rules, "");
         resultRed = new RuleVariable(rules, "");
@@ -184,8 +107,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleHardSi",
                 new Clause[]{
-                    new Clause(hardwareSi, igual, Variables.SI),
-                    new Clause(hardwareNo, igual, Variables.NO)
+                    new Clause(hardware, igual, Variables.SI),
                 },
                 new Clause(resultHard, igual, "hardSi")
         );
@@ -193,8 +115,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleHardNo",
                 new Clause[]{
-                    new Clause(hardwareSi, igual, Variables.NO),
-                    new Clause(hardwareNo, igual, Variables.SI)
+                    new Clause(hardware, igual, Variables.NO),
                 },
                 new Clause(resultHard, igual, "hardNo")
         );
@@ -202,8 +123,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleRedSi",
                 new Clause[]{
-                    new Clause(redesSi, igual, Variables.SI),
-                    new Clause(redesNo, igual, Variables.NO)
+                    new Clause(redes, igual, Variables.SI),
                 },
                 new Clause(resultRed, igual, "redSi")
         );
@@ -211,8 +131,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleRedNo",
                 new Clause[]{
-                    new Clause(redesSi, igual, Variables.NO),
-                    new Clause(redesNo, igual, Variables.SI)
+                    new Clause(redes, igual, Variables.NO),
                 },
                 new Clause(resultRed, igual, "redNo")
         );
@@ -220,8 +139,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleNumSi",
                 new Clause[]{
-                    new Clause(numerosSi, igual, Variables.SI),
-                    new Clause(numerosNo, igual, Variables.NO)
+                    new Clause(numeros, igual, Variables.SI),
                 },
                 new Clause(resultNum, igual, "numSi")
         );
@@ -229,8 +147,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleNumNo",
                 new Clause[]{
-                    new Clause(numerosSi, igual, Variables.NO),
-                    new Clause(numerosNo, igual, Variables.SI)
+                    new Clause(numeros, igual, Variables.NO),
                 },
                 new Clause(resultNum, igual, "numNo")
         );
@@ -238,8 +155,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleProgSi",
                 new Clause[]{
-                    new Clause(programacionSi, igual, Variables.SI),
-                    new Clause(programacionNo, igual, Variables.NO)
+                    new Clause(programacion, igual, Variables.SI),
                 },
                 new Clause(resultProg, igual, "progSi")
         );
@@ -247,8 +163,7 @@ public class informaticaBean implements Serializable {
                 rules,
                 "ruleProgNo",
                 new Clause[]{
-                    new Clause(programacionSi, igual, Variables.NO),
-                    new Clause(programacionNo, igual, Variables.SI)
+                    new Clause(programacion, igual, Variables.NO),
                 },
                 new Clause(resultProg, igual, "progNo")
         );
@@ -262,6 +177,50 @@ public class informaticaBean implements Serializable {
                     new Clause(resultNum, igual, "numSi"),
                 },
                 new Clause(resultCareer, igual, "Ing. en Informatica")
+        );
+        Rule ruleNo = new Rule(
+                rules,
+                "ruleIngSoft",
+                new Clause[]{
+                    new Clause(resultRed, igual, "redNo"),
+                    new Clause(resultHard, igual, "hardNo"),
+                    new Clause(resultProg, igual, "progNo"),
+                    new Clause(resultNum, igual, "numNo"),
+                },
+                new Clause(resultCareer, igual, "Busca en otra area")
+        );
+        Rule rule1 = new Rule(
+                rules,
+                "rule1",
+                new Clause[]{
+                    new Clause(resultRed, igual, "redNo"),
+                    new Clause(resultHard, igual, "hardNo"),
+                    new Clause(resultProg, igual, "progNo"),
+                    new Clause(resultNum, igual, "numSi"),
+                },
+                new Clause(resultCareer, igual, "Lic. en Matematica")
+        );
+        Rule rule2 = new Rule(
+                rules,
+                "rule2",
+                new Clause[]{
+                    new Clause(resultRed, igual, "redNo"),
+                    new Clause(resultHard, igual, "hardSi"),
+                    new Clause(resultProg, igual, "progSi"),
+                    new Clause(resultNum, igual, "numSi"),
+                },
+                new Clause(resultCareer, igual, "Ing. en Sistemas")
+        );
+        Rule rule3 = new Rule(
+                rules,
+                "rule2",
+                new Clause[]{
+                    new Clause(resultRed, igual, "redNo"),
+                    new Clause(resultHard, igual, "hardNo"),
+                    new Clause(resultProg, igual, "progSi"),
+                    new Clause(resultNum, igual, "numSi"),
+                },
+                new Clause(resultCareer, igual, "Ing. en Software")
         );
         
     }
