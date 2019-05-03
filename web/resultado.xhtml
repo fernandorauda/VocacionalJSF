@@ -23,6 +23,10 @@ and open the template in the editor.
                         <hr/>
                         Se sugiere la siguiente carrera:  
                         <h:outputText value="#{inforB.r.career}"/>
+                        <h:form class="">
+                            <h:commandButton class="btn btn-success col-md-12 mt-5" value="Terminar" action="#{inforB.settear()}"  />
+                            <h:commandButton class="btn btn-primary col-md-12 mt-5" value="Imprimir Reporte" action="#{inforB.reporte()}" />
+                        </h:form>
                     </div>
                 </div>
             </ui:define>

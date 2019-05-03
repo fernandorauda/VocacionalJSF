@@ -10,83 +10,104 @@ public class Resultados  implements java.io.Serializable {
 
 
      private Integer id;
+     private String nombre;
      private String result1 = "no";
      private String result2 = "no";
      private String result3 = "no";
      private String result4 = "no";
      private String career;
      private String area;
-     private String nombre;
 
     public Resultados() {
     }
 
-    public Resultados(String result1, String result2, String result3, String result4, String career, String area, String nombre) {
-       this.result1 = result1;
-       this.result2 = result2;
-       this.result3 = result3;
-       this.result4 = result4;
-       this.career = career;
-       this.area = area;
-       this.nombre = nombre;
+    public Resultados(Integer id, String nombre, String career, String area) {
+        this.id = id;
+        this.nombre = nombre;
+        this.career = career;
+        this.area = area;
     }
-   
+
+    public Resultados(String nombre, String result1, String result2, String result3, String result4, String career, String area) {
+        this.nombre = nombre;
+        this.result1 = result1;
+        this.result2 = result2;
+        this.result3 = result3;
+        this.result4 = result4;
+        this.career = career;
+        this.area = area;
+    }
+
+    public Resultados(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
-        return this.id;
+        return id;
     }
-    
+
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getResult1() {
-        return this.result1;
-    }
-    
-    public void setResult1(String result1) {
-        this.result1 = result1;
-    }
-    public String getResult2() {
-        return this.result2;
-    }
-    
-    public void setResult2(String result2) {
-        this.result2 = result2;
-    }
-    public String getResult3() {
-        return this.result3;
-    }
-    
-    public void setResult3(String result3) {
-        this.result3 = result3;
-    }
-    public String getResult4() {
-        return this.result4;
-    }
-    
-    public void setResult4(String result4) {
-        this.result4 = result4;
-    }
-    public String getCareer() {
-        return this.career;
-    }
-    
-    public void setCareer(String career) {
-        this.career = career;
-    }
-    public String getArea() {
-        return this.area;
-    }
-    
-    public void setArea(String area) {
-        this.area = area;
-    }
+
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getResult1() {
+        return result1;
+    }
+
+    public void setResult1(String result1) {
+        this.result1 = result1;
+    }
+
+    public String getResult2() {
+        return result2;
+    }
+
+    public void setResult2(String result2) {
+        this.result2 = result2;
+    }
+
+    public String getResult3() {
+        return result3;
+    }
+
+    public void setResult3(String result3) {
+        this.result3 = result3;
+    }
+
+    public String getResult4() {
+        return result4;
+    }
+
+    public void setResult4(String result4) {
+        this.result4 = result4;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    
+
 
 
 

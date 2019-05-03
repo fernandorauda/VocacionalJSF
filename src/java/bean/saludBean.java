@@ -10,10 +10,23 @@ import Rule.*;
 import Utilidades.Variables;
 import dao.ResultadoDao;
 import entidad.Resultados;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.inject.Named;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  *
@@ -258,6 +271,40 @@ public class saludBean implements Serializable {
                 new Clause(resultCareer, igual, "Neurólogo")
         );
     }
+    
+            //Report
+    public void reporte() throws JRException, IOException{
+            
+        Map parametros = new HashMap();
+        parametros.put("name", r.getNombre());
+        parametros.put("result1", r.getResult1());
+        parametros.put("result2", r.getResult2());
+        parametros.put("result3", r.getResult3());
+        parametros.put("result4", r.getResult4());
+        parametros.put("career", r.getCareer());
+        
+        String resultado = "resultados.pdf";
+        String reporte = "/recursos/reports/Salud.jasper";
+        
+        GenerarReporte(parametros, reporte, null, resultado);
+        
+    }
+    
+    public void GenerarReporte(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
+        String relativeWebPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(jasperPath);
+        File file = new File(relativeWebPath);
+        JRBeanCollectionDataSource source = new JRBeanCollectionDataSource(dataSource);
+        JasperPrint print = JasperFillManager.fillReport(file.getPath(), params, source);
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.setContentType("application/pdf");
+
+        response.setHeader("Content-Disposition", "inline");
+        ServletOutputStream stream = response.getOutputStream();
+
+        JasperExportManager.exportReportToPdfStream(print, stream);
+
+        FacesContext.getCurrentInstance().responseComplete();
+    }
      //Getter and Setter
     public Resultados getR() {
         return r;
@@ -273,5 +320,10 @@ public class saludBean implements Serializable {
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+    
+    public String settear(){
+        r = new Resultados();
+        return "/index.xhtml?faces-redirect=true";
     }
 }
