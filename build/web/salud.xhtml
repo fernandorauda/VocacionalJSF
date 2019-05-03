@@ -5,58 +5,57 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Sistema Vocacional</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <title>Salud</title>
     </h:head>
-    <h:body>
+     <h:body>
         <ui:composition template="./WEB-INF/templates/header.xhtml">
             <ui:define name="content">
                 <div class="jumbotron jumbotron-fluid mt-5" style="height: 100vh; margin-bottom: 0px !important">
                     <h:form class="container col-md-4">
                         Ingresa tu Nombre:
-                        <h:inputText value="#{inforB.r.nombre}" label="El campo debe de contener tu nombre"/>
+                        <h:inputText value="#{saludBean.r.nombre}" id="inputSalud" label="El campo debe de contener tu nombre" required="true"/>
                         <h:message for="inputSalud"></h:message>
-                        <p class="pt-5">¿Te gusta administrar redes informaticas?</p>
+                        <p class="pt-5">¿Te interesa diagnosticar tratamientos para tratar enfermedades?</p>
                         <div  class="">
                             <h1>
-                                <h:selectOneRadio class="col-md-12" value="#{inforB.r.result1}">
+                                <h:selectOneRadio class="col-md-12" value="#{saludBean.r.result1}">
                                     <h1><f:selectItem class="col-md-6" itemValue="si" itemLabel="Si" /></h1>
                                     <h1><f:selectItem class="col-md-6" itemValue="no" itemLabel="No" /></h1>
                                 </h:selectOneRadio>
                             </h1>
                         </div>
                         <hr/>
-                        <p>¿Te interesa conocer partes del hardware?</p>
+                        <p>¿Te gustaría saber técnicas de curación, primero auxilios y de tratamiento y aplicación de medicamentos?</p>
                         <div  class="">
                             <h1>
-                                <h:selectOneRadio class="col-md-12" value="#{inforB.r.result2}">
+                                <h:selectOneRadio class="col-md-12" value="#{saludBean.r.result2}">
                                     <h1><f:selectItem class="col-md-6" itemValue="si" itemLabel="Si"></f:selectItem></h1>
                                     <h1><f:selectItem class="col-md-6" itemValue="no" itemLabel="No" /></h1>
                                 </h:selectOneRadio>
                             </h1>
                         </div>
                         <hr/>
-                        <p>¿Te resulta atractivo saber como crear programas de computadoras?</p>
+                        <p>¿Te gustaría tratar de diagnosticar examenes de tipo, micro biológico y creación de medicamentos?</p>
                         <div  class="">
                             <h1>
-                                <h:selectOneRadio class="col-md-12" value="#{inforB.r.result3}">
+                                <h:selectOneRadio class="col-md-12" value="#{saludBean.r.result3}">
                                     <h1><f:selectItem class="col-md-6" itemValue="si" itemLabel="Si" /></h1>
                                     <h1><f:selectItem class="col-md-6" itemValue="no" itemLabel="No" /></h1>
                                 </h:selectOneRadio>
                             </h1>
                         </div>
                         <hr/>
-                        <p>¿Estarías dispuesto a estudiar cálculo diferencial?</p>
+                        <p>¿Te interesa conocer el cuerpo de forma exacta, sus huesos, músculos y nervios?</p>
                         <div  class="">
                             <h1>
-                                <h:selectOneRadio class="col-md-12" value="#{inforB.r.result4}">
+                                <h:selectOneRadio class="col-md-12" value="#{saludBean.r.result4}">
                                     <h1><f:selectItem class="col-md-6" itemValue="si" itemLabel="Si" /></h1>
                                     <h1><f:selectItem class="col-md-6" itemValue="no" itemLabel="No" /></h1>
                                 </h:selectOneRadio>
                             </h1>
                         </div>
 
-                        <h:commandButton class="btn btn-primary col-md-12 mt-5" value="Enviar" action="#{inforB.obtenerHard}"  />
+                        <h:commandButton class="btn btn-primary col-md-12 mt-5" value="Enviar" action="#{saludBean.obtenerHard}"  />
 
 
                     </h:form>

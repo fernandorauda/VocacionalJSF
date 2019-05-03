@@ -10,7 +10,6 @@ import Utilidades.Variables;
 import dao.ResultadoDao;
 import entidad.Resultados;
 import java.io.Serializable;
-import java.util.Set;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -69,6 +68,7 @@ public class informaticaBean implements Serializable {
 
     //Guardar Resultado
     public void guardar() {
+       
         dao = new ResultadoDao();
         dao.guardar(r);
     }

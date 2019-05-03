@@ -14,7 +14,8 @@
                 <div class="jumbotron jumbotron-fluid mt-5" style="height: 100vh; margin-bottom: 0px !important">
                     <h:form class="container col-md-4">
                         Ingresa tu Nombre:
-                        <h:inputText value="#{inforB.r.nombre}"/>
+                        <h:inputText value="#{inforB.r.nombre}" label="El campo debe de contener tu nombre"/>
+                        <h:message for="inputSalud"></h:message>
                         <p class="pt-5">¿Te gusta administrar redes informaticas?</p>
                         <div  class="">
                             <h1>
@@ -35,7 +36,7 @@
                             </h1>
                         </div>
                         <hr/>
-                        <p>¿Te resulta atractivo saber crear programas de computadoras?</p>
+                        <p>¿Te resulta atractivo saber como crear programas de computadoras?</p>
                         <div  class="">
                             <h1>
                                 <h:selectOneRadio class="col-md-12" value="#{inforB.r.result3}">
@@ -45,7 +46,7 @@
                             </h1>
                         </div>
                         <hr/>
-                        <p>¿Estarias dispuesto a estudiar calculo diferencial?</p>
+                        <p>¿Estarías dispuesto a estudiar cálculo diferencial?</p>
                         <div  class="">
                             <h1>
                                 <h:selectOneRadio class="col-md-12" value="#{inforB.r.result4}">
